@@ -199,6 +199,20 @@ vector<Card> Hand::getCards() {
     return cards;
 }
 
+string Hand::showNewCard() {
+    string newCard = "";
+
+    string spanishRank = cards[cards.size()].get_spanish_rank();
+    string spanishSuit = cards[cards.size()].get_spanish_suit();
+
+    string englishRank = cards[cards.size()].get_english_rank();
+    string englishSuit = cards[cards.size()].get_english_suit();
+
+    newCard += spanishRank + " de " + spanishSuit + "(" + englishRank + " of " + englishSuit + ")";
+
+    return newCard;
+}
+
 void Hand::sumTotalValue() {
     int total = 0;
     int value;

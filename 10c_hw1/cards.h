@@ -67,6 +67,8 @@ public:
 
     vector<Card> getCards();
 
+    string showNewCard();
+
     void sumTotalValue();
 
     int getTotalValue();

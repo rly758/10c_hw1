@@ -46,8 +46,9 @@ int main() {
 
         while (response != 'n') {
             cin >> response;
-            //add card to player's hand using PlayerVar.HandVar.addCard(), must add Hand as a private member of Player class first
-            cout << "New card:\n\t" << endl; //add showNewCard function
+
+            p->getHand().addCard();
+            cout << "New card:\n\t" << p->getHand().showNewCard() << endl;
 
             cout << "Your cards: " << endl; //implement showCards function for Hand 
             cout << "Your total is " << "Do you want another card (y/n)? "; //Add Hand as a private member of Player to access the player's hand's total value
