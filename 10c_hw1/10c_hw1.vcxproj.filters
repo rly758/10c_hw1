@@ -18,6 +18,9 @@
     <ClCompile Include="10c_hw1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="cards.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cards.h">

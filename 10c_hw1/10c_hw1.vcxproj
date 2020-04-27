@@ -148,6 +148,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="10c_hw1.cpp" />
+    <ClCompile Include="cards.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cards.h" />
