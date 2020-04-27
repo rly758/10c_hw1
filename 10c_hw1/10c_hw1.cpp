@@ -19,5 +19,10 @@ using namespace std;
 // Stub for main
 int main() {
     /* --STATEMENTS-- */
+    int num = 0;
+    while (num == 0) {
+        cout << "Artificial conflict of an accidental infinite loop" << endl;
+    }
+
     return 0;
 }
