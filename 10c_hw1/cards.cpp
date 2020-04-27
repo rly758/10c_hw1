@@ -221,6 +221,10 @@ int Hand::getTotalValue() {
     return totalValue;
 }
 
+void Hand::test() {
+    return;
+}
+
    /* *************************************************
       Player class
       ************************************************* */

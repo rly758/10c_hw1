@@ -70,6 +70,8 @@ public:
     int getTotalValue();
     // You decide what functions you'll need...
 
+    void test();
+
 private:
     // You decide what fields you'll need...
     vector<Card> cards;
