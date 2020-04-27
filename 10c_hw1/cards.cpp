@@ -189,8 +189,37 @@ bool Card::operator < (Card card2) const {
    Hand class
    ************************************************* */
    // Implemente the member functions of the Hand class here.
+void Hand::addCard() {
+    Card *newCard = new Card();
+    cards.push_back(*newCard);
+}
 
+void Hand::sumTotalValue(vector<Card> hand) {
+    int total = 0;
+    int value;
+    for (Card card : hand) {
+        value = card.get_rank();
+        switch (value)
+        {
+        case(10):
+            value = 0.5; break;
+        case(11):
+            value = 0.5; break;
+        case(12):
+            value = 0.5; break;
+        default:
+            break;
+        }
 
+        total += value;
+    }
+
+    totalValue = total;
+}
+
+int Hand::getTotalValue() {
+    return totalValue;
+}
 
    /* *************************************************
       Player class
