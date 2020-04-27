@@ -199,10 +199,10 @@ vector<Card> Hand::getCards() {
     return cards;
 }
 
-void Hand::sumTotalValue(vector<Card> hand) {
+void Hand::sumTotalValue() {
     int total = 0;
     int value;
-    for (Card card : hand) {
+    for (Card card : cards) {
         value = card.get_rank();
         switch (value)
         {
@@ -232,10 +232,19 @@ int Hand::getTotalValue() {
       // Implemente the member functions of the Player class here.
 Player::Player(int m) {
     money = m;
+    hand.addCard();
 }
 
 int Player::getMoney() {
     return money;
+}
+
+void Player::setMoney(int newBalance) {
+    money = newBalance;
+}
+
+Hand Player::getHand() {
+    return hand;
 }
 
 void Player::showHand() {

@@ -67,7 +67,7 @@ public:
 
     vector<Card> getCards();
 
-    void sumTotalValue(vector<Card> hand);
+    void sumTotalValue();
 
     int getTotalValue();
     // You decide what functions you'll need...
@@ -86,6 +86,10 @@ public:
     Player(int m);
 
     int getMoney();
+
+    void setMoney(int newBalance);
+
+    Hand getHand();
 
     void showHand();
     // You decide what functions you'll need...
