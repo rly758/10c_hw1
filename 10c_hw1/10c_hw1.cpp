@@ -69,7 +69,7 @@ int main() {
 
         //if player did not bust, total <= 7.5, it becomes the dealer's turn
         //otherwise the player has lost, skip the below portion involving the dealer drawing cards
-        int dealerTotal = 0;
+        double dealerTotal = 0;
         if (!bust) {
             cout << "Dealer's cards: ";
             d->showHand();
@@ -105,12 +105,12 @@ int main() {
         }
         else if (dealerTotal < p->getHand().getTotalValue()) {
             //player win
-            p->setMoney(p->getMoney + 2 * bet);
+            p->setMoney(p->getMoney() + 2 * bet);
             cout << "You win " << bet << "." << endl;
         }
         else {
             //tie
-            p->setMoney(p->getMoney + bet);
+            p->setMoney(p->getMoney() + bet);
             cout << "It was a tie. There player's bet has been returned. " << endl;
         }
     }

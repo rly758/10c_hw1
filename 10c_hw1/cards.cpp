@@ -23,25 +23,25 @@ You might or might not need these two extra libraries
 Card::Card() {
     int r = 1 + rand() % 4;
     switch (r) {
-    case 1: suit = OROS; break;
-    case 2: suit = COPAS; break;
-    case 3: suit = ESPADAS; break;
-    case 4: suit = BASTOS; break;
+    case 1: Card::suit = OROS; break;
+    case 2: Card::suit = COPAS; break;
+    case 3: Card::suit = ESPADAS; break;
+    case 4: Card::suit = BASTOS; break;
     default: break;
     }
 
     r = 1 + rand() % 10;
     switch (r) {
-    case  1: rank = AS; break;
-    case  2: rank = DOS; break;
-    case  3: rank = TRES; break;
-    case  4: rank = CUATRO; break;
-    case  5: rank = CINCO; break;
-    case  6: rank = SEIS; break;
-    case  7: rank = SIETE; break;
-    case  8: rank = SOTA; break;
-    case  9: rank = CABALLO; break;
-    case 10: rank = REY; break;
+    case  1: Card::rank = AS; break;
+    case  2: Card::rank = DOS; break;
+    case  3: Card::rank = TRES; break;
+    case  4: Card::rank = CUATRO; break;
+    case  5: Card::rank = CINCO; break;
+    case  6: Card::rank = SEIS; break;
+    case  7: Card::rank = SIETE; break;
+    case  8: Card::rank = SOTA; break;
+    case  9: Card::rank = CABALLO; break;
+    case 10: Card::rank = REY; break;
     default: break;
     }
 }
@@ -49,7 +49,7 @@ Card::Card() {
 // Accessor: returns a string with the suit of the card in Spanish 
 string Card::get_spanish_suit() const {
     string suitName;
-    switch (suit) {
+    switch (Card::suit) {
     case OROS:
         suitName = "oros";
         break;
@@ -70,7 +70,7 @@ string Card::get_spanish_suit() const {
 // Accessor: returns a string with the rank of the card in Spanish 
 string Card::get_spanish_rank() const {
     string rankName;
-    switch (rank) {
+    switch (Card::rank) {
     case AS:
         rankName = "As";
         break;
@@ -112,7 +112,7 @@ string Card::get_spanish_rank() const {
 // This is just a stub! Modify it to your liking.
 string Card::get_english_suit() const {
     string suitName;
-    switch (suit) {
+    switch (Card::suit) {
     case OROS:
         suitName = "golds";
         break;
@@ -134,7 +134,7 @@ string Card::get_english_suit() const {
 // This is just a stub! Modify it to your liking.
 string Card::get_english_rank() const {
     string rankName;
-    switch (rank) {
+    switch (Card::rank) {
     case AS:
         rankName = "Ace";
         break;
@@ -208,35 +208,35 @@ string Hand::showNewCard() {
     string englishRank = cards[cards.size()].get_english_rank();
     string englishSuit = cards[cards.size()].get_english_suit();
 
-    newCard += /*"\n\t"*/ + spanishRank + " de " + spanishSuit + "(" + englishRank + " of " + englishSuit + ")";
+    newCard += "\n\t" + spanishRank + " de " + spanishSuit + "(" + englishRank + " of " + englishSuit + ")";
 
     return newCard;
 }
 
 void Hand::sumTotalValue() {
-    int total = 0;
+    double total = 0;
     int value;
     for (Card card : cards) {
         value = card.get_rank();
         switch (value)
         {
         case(10):
-            value = 0.5; break;
+            value = 1; break;
         case(11):
-            value = 0.5; break;
+            value = 1; break;
         case(12):
-            value = 0.5; break;
+            value = 1; break;
         default:
             break;
         }
 
-        total += value;
+        total += value / 2.0;
     }
 
     totalValue = total;
 }
 
-int Hand::getTotalValue() {
+double Hand::getTotalValue() {
     return totalValue;
 }
 
@@ -263,7 +263,7 @@ Hand Player::getHand() {
 
 void Player::showHand() {
     for (Card card : hand.getCards()) {
-        cout << "\n\t" << card.get_spanish_rank << " de " << card.get_spanish_suit << "\t";
+        cout << "\n\t" << card.get_spanish_rank() << " de " << card.get_spanish_suit() << "\t";
         cout << "(" << card.get_english_rank() << " of " << card.get_english_suit() << ")" << endl;
     }
 }

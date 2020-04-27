@@ -71,13 +71,13 @@ public:
 
     void sumTotalValue();
 
-    int getTotalValue();
+    double getTotalValue();
     // You decide what functions you'll need...
 
 private:
     // You decide what fields you'll need...
     vector<Card> cards;
-    int totalValue = 0;
+    double totalValue = 0;
 };
 
 
