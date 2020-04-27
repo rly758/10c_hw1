@@ -65,6 +65,8 @@ public:
 
     void addCard();
 
+    vector<Card> getCards();
+
     void sumTotalValue(vector<Card> hand);
 
     int getTotalValue();
@@ -83,10 +85,14 @@ public:
     //    Assigns initial amount of money
     Player(int m);
 
+    int getMoney();
+
+    void showHand();
     // You decide what functions you'll need...
 
 private:
     int money;
+    Hand hand;
     // You decide what extra fields (if any) you'll need...
 };
 
