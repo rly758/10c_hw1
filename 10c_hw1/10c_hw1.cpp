@@ -28,7 +28,7 @@ int main() {
     while (p->getMoney() != 0) {
         bool bust = false;
         int bet;
-        cout << "You have $" << p->getMoney() << ". Enter bet: ";
+        cout << "\nYou have $" << p->getMoney() << ". Enter bet: ";
 
         cin >> bet;
 
@@ -69,12 +69,13 @@ int main() {
 
         //if player did not bust, total <= 7.5, it becomes the dealer's turn
         //otherwise the player has lost, skip the below portion involving the dealer drawing cards
+        int dealerTotal = 0;
         if (!bust) {
             cout << "Dealer's cards: ";
             d->showHand();
 
             d->getHand().sumTotalValue();
-            int dealerTotal = d->getHand().getTotalValue();
+            dealerTotal = d->getHand().getTotalValue();
             cout << "The dealer's total is " << dealerTotal << endl; 
             //while loop here for while dealer's total is <= 5.5
             while (dealerTotal <= 5.5) {
@@ -89,9 +90,29 @@ int main() {
                 cout << "The dealer's total is " << dealerTotal << endl; //add Hand to Player's private members so the totalValue can be accessed
             }
         }
+
         //if dealer's total <= 7.5 && total > playerTotal player loses
         // ...continue other cases for win, lose, tie
         //game round ends there and game's overall while loop continues until palyer reaches 0 money or dealer loses 900
+        if (dealerTotal > 7.5) {
+            //player win
+            p->setMoney(p->getMoney() + 2 * bet);
+            cout << "You win " << bet << "." << endl;
+        }
+        else if (dealerTotal > p->getHand().getTotalValue()) {
+            //dealer win
+            cout << "Too bad. You lose " << bet << "." << endl;
+        }
+        else if (dealerTotal < p->getHand().getTotalValue()) {
+            //player win
+            p->setMoney(p->getMoney + 2 * bet);
+            cout << "You win " << bet << "." << endl;
+        }
+        else {
+            //tie
+            p->setMoney(p->getMoney + bet);
+            cout << "It was a tie. There player's bet has been returned. " << endl;
+        }
     }
 
     return 0;
