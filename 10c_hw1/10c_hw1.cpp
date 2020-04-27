@@ -1,3 +1,12 @@
+/*
+* Name: Richard Ly
+* Class: PIC 10C
+* Professor: Ricardo Salazar
+* Assignment#: 1
+* Assignment Description: Using the template Professor Salazar has provided, allow the user to play the card game 'siete y medio' 
+*                         against the computer until either the player runs out of money or the dealer(computer) loses $900.
+*/
+
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -19,10 +28,8 @@ using namespace std;
 // Stub for main
 int main() {
     /* --STATEMENTS-- */
-    int num = 0;
-    if (num == 0) {
-        cout << "Artificial conflict of an accidental infinite loop" << endl;
-    }
+    
+
 
     return 0;
 }

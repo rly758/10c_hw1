@@ -1,6 +1,7 @@
 #include "cards.h"
 #include <cstdlib>
 #include <iostream>
+#include <iomanip>
 
 /*
 You might or might not need these two extra libraries
