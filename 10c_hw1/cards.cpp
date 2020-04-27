@@ -194,6 +194,10 @@ void Hand::addCard() {
     cards.push_back(*newCard);
 }
 
+vector<Card> Hand::getCards() {
+    return cards;
+}
+
 void Hand::sumTotalValue(vector<Card> hand) {
     int total = 0;
     int value;
@@ -225,4 +229,17 @@ int Hand::getTotalValue() {
       Player class
       ************************************************* */
       // Implemente the member functions of the Player class here.
+Player::Player(int m) {
+    money = m;
+}
 
+int Player::getMoney() {
+    return money;
+}
+
+void Player::showHand() {
+    for (Card card : hand.getCards()) {
+        cout << "\t" << card.get_spanish_rank << " de " << card.get_spanish_suit << "\t";
+        cout << "(" << card.get_english_rank() << " of " << card.get_english_suit() << ")" << endl;
+    }
+}
