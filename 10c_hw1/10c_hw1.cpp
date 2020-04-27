@@ -20,12 +20,14 @@ using namespace std;
 int main() {
     /* --STATEMENTS-- */
     char response = 'y';
-    int startMoney = 100, bet;
+    int startMoney = 100;
     Player* p = new Player(startMoney);
     Player* d = new Player(900);
     
     //enveloping while loop to keep playing until player has 0 money or dealer reaches 0 money (i.e. dealer loses 900, because dealer will be designed to not gain money on player's loss)
     while (p->getMoney() != 0) {
+        bool bust = false;
+        int bet;
         cout << "You have $" << p->getMoney() << ". Enter bet: ";
 
         cin >> bet;
@@ -38,7 +40,7 @@ int main() {
         p->setMoney(p->getMoney() - bet);
 
 
-        cout << "Your cards: " << endl;
+        cout << "Your cards: ";
         p->showHand();
 
         p->getHand().sumTotalValue();
@@ -48,26 +50,45 @@ int main() {
             cin >> response;
 
             p->getHand().addCard();
-            cout << "New card:\n\t" << p->getHand().showNewCard() << endl;
+            cout << "New card: " << p->getHand().showNewCard() << endl;
 
             cout << "Your cards: ";
             p->showHand();
 
             p->getHand().sumTotalValue();
-            cout << "Your total is " << p->getHand().getTotalValue() << "Do you want another card (y/n)? "; 
+
+            if (p->getHand().getTotalValue() <= 7.5) {
+                cout << "Your total is " << p->getHand().getTotalValue() << "Do you want another card (y/n)? ";
+            }
+            else {
+                bust = true;
+                cout << "Too bad. You lose " << bet << ".";
+                //don't update player's money - it was already taken away immediately after the bet was made
+            }
         }
 
-        //if player has not lost yet, total <= 7.5
-        //else the palyer has lost, skip the below portion involving the dealer drawing cards
+        //if player did not bust, total <= 7.5, it becomes the dealer's turn
+        //otherwise the player has lost, skip the below portion involving the dealer drawing cards
+        if (!bust) {
+            cout << "Dealer's cards: ";
+            d->showHand();
 
-        cout << "Dealer's cards: " << endl; //showCards
-        cout << "The dealer's total is " << endl; //add Hand to Player's private members so the totalValue can be accessed
-        //while loop here for while dealer's total is <= 5.5
-        cout << "New card: " << endl; //add Hand to Player's private members so the totalValue can be accessed
-        cout << "Dealer's cards: " << endl; //showCards
-        cout << "The dealer's total is " << endl; //add Hand to Player's private members so the totalValue can be accessed
-        //end while loop
+            d->getHand().sumTotalValue();
+            int dealerTotal = d->getHand().getTotalValue();
+            cout << "The dealer's total is " << dealerTotal << endl; 
+            //while loop here for while dealer's total is <= 5.5
+            while (dealerTotal <= 5.5) {
+                d->getHand().addCard();
+                cout << "New card: " << d->getHand().showNewCard();
 
+                cout << "Dealer's cards: ";
+                d->showHand();
+
+                d->getHand().sumTotalValue();
+                dealerTotal = d->getHand().getTotalValue();
+                cout << "The dealer's total is " << dealerTotal << endl; //add Hand to Player's private members so the totalValue can be accessed
+            }
+        }
         //if dealer's total <= 7.5 && total > playerTotal player loses
         // ...continue other cases for win, lose, tie
         //game round ends there and game's overall while loop continues until palyer reaches 0 money or dealer loses 900

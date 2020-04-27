@@ -208,7 +208,7 @@ string Hand::showNewCard() {
     string englishRank = cards[cards.size()].get_english_rank();
     string englishSuit = cards[cards.size()].get_english_suit();
 
-    newCard += spanishRank + " de " + spanishSuit + "(" + englishRank + " of " + englishSuit + ")";
+    newCard += /*"\n\t"*/ + spanishRank + " de " + spanishSuit + "(" + englishRank + " of " + englishSuit + ")";
 
     return newCard;
 }
