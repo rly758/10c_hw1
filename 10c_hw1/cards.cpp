@@ -263,7 +263,7 @@ Hand Player::getHand() {
 
 void Player::showHand() {
     for (Card card : hand.getCards()) {
-        cout << "\t" << card.get_spanish_rank << " de " << card.get_spanish_suit << "\t";
+        cout << "\n\t" << card.get_spanish_rank << " de " << card.get_spanish_suit << "\t";
         cout << "(" << card.get_english_rank() << " of " << card.get_english_suit() << ")" << endl;
     }
 }

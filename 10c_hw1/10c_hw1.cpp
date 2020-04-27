@@ -50,8 +50,11 @@ int main() {
             p->getHand().addCard();
             cout << "New card:\n\t" << p->getHand().showNewCard() << endl;
 
-            cout << "Your cards: " << endl; //implement showCards function for Hand 
-            cout << "Your total is " << "Do you want another card (y/n)? "; //Add Hand as a private member of Player to access the player's hand's total value
+            cout << "Your cards: ";
+            p->showHand();
+
+            p->getHand().sumTotalValue();
+            cout << "Your total is " << p->getHand().getTotalValue() << "Do you want another card (y/n)? "; 
         }
 
         //if player has not lost yet, total <= 7.5
