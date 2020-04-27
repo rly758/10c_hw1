@@ -63,10 +63,17 @@ public:
     // A vector of Cards
     Hand();
 
+    void addCard();
+
+    void sumTotalValue(vector<Card> hand);
+
+    int getTotalValue();
     // You decide what functions you'll need...
 
 private:
     // You decide what fields you'll need...
+    vector<Card> cards;
+    int totalValue = 0;
 };
 
 
