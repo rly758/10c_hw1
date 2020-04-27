@@ -20,7 +20,7 @@ using namespace std;
 int main() {
     /* --STATEMENTS-- */
     int num = 0;
-    while (num == 0) {
+    if (num == 0) {
         cout << "Artificial conflict of an accidental infinite loop" << endl;
     }
 
